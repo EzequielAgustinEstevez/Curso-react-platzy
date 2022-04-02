@@ -1,8 +1,11 @@
 import React from "react";
 import { useLocalStorage } from "./useLocalStorage";
 
+//! createContext es una función que nos permite crear un contexto
+//! que podemos usar en toda la aplicación
 const TodoContext = React.createContext();
 
+//! exportar el contexto para usarlo en otros componentes
 function TodoProvider(props) {
   const {
     item: todos,
@@ -41,6 +44,8 @@ function TodoProvider(props) {
     saveTodos(newTodos);
   };
   return (
+    //! TodoContext.Provider es un componente que nos permite
+    //! pasar un contexto al componente que lo necesite
     <TodoContext.Provider
       value={{
         loading,
@@ -54,9 +59,13 @@ function TodoProvider(props) {
         deleteTodo,
       }}
     >
-      {props.children}
+      {
+        props.children /* es el componente que se encuentra dentro del provider */
+      }
     </TodoContext.Provider>
   );
 }
 
+//! exportar el provider para usarlo en otros componentes
+//! y exportar el contexto para usarlo en otros componentes
 export { TodoProvider, TodoContext };
