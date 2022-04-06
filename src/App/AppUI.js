@@ -6,6 +6,7 @@ import { TodoList } from '../TodoList';
 import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 
 function AppUI() {
 	//! Trae las props del contexto "TodoContext" y las guarda en una variable
@@ -16,7 +17,7 @@ function AppUI() {
 		completeTodo,
 		deleteTodo,
 		modalOpen,
-		setModalOpen,
+		setModalOpen: setOpenModal,
 	} = React.useContext(TodoContext);
 
 	return (
@@ -40,10 +41,10 @@ function AppUI() {
 			</TodoList>
 			{!!modalOpen && (
 				<Modal>
-					<p>Holaa</p>
+					<TodoForm />
 				</Modal>
 			)}
-			<CreateTodoButton setModalOpen={setModalOpen} />
+			<CreateTodoButton setModalOpen={setOpenModal} />
 		</React.Fragment>
 	);
 }
