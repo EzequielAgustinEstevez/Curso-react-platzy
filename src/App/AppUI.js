@@ -7,6 +7,7 @@ import { TodoItem } from '../TodoItem';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
+import { TodoListLoader } from '../TodoListLoader';
 
 function AppUI() {
 	//! Trae las props del contexto "TodoContext" y las guarda en una variable
@@ -17,7 +18,7 @@ function AppUI() {
 		completeTodo,
 		deleteTodo,
 		modalOpen,
-		setModalOpen: setOpenModal,
+		setOpenModal,
 	} = React.useContext(TodoContext);
 
 	return (
@@ -27,11 +28,11 @@ function AppUI() {
 
 			<TodoList>
 				{error && <p>Desespérate, hubo un error...</p>}
-				{loading && !error && <p>Estamos cargando, no desesperes...</p>}
+				{loading && !error && <TodoListLoader />}
 				{!loading && !searchedTodos.length && <p>¡Crea tu primer TODO!</p>}
-				{searchedTodos.map((todo) => (
+				{searchedTodos.map((todo, index) => (
 					<TodoItem
-						key={todo.text}
+						key={index}
 						text={todo.text}
 						completed={todo.completed}
 						onComplete={() => completeTodo(todo.text)}

@@ -8,7 +8,7 @@ function TodoForm() {
 	//prettier-ignore
 	const { 
     addTodo,
-    setModalOpen: setOpenModal
+    setOpenModal
    } = React.useContext(TodoContext);
 
 	const onCancel = (event) => {

@@ -70,7 +70,7 @@ function TodoProvider(props) {
 				completeTodo,
 				deleteTodo,
 				modalOpen,
-				setModalOpen: setOpenModal,
+				setOpenModal,
 			}}>
 			{
 				props.children /* es el componente que se encuentra dentro del provider */
