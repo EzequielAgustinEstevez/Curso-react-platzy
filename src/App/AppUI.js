@@ -8,9 +8,11 @@ import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
 import { TodoListLoader } from '../TodoListLoader';
+import { TodoListError } from '../TodoListError';
+import { TodoListEmpty } from '../TodoListEmpty';
 
 function AppUI() {
-	//! Trae las props del contexto "TodoContext" y las guarda en una variable
+	//! Trae las props del contexto "TodoContext" y las guarda en una cosntante
 	const {
 		error,
 		loading,
@@ -27,9 +29,9 @@ function AppUI() {
 			<TodoSearch />
 
 			<TodoList>
-				{error && <p>Desespérate, hubo un error...</p>}
+				{error && <TodoListError error={error} />}
 				{loading && !error && <TodoListLoader />}
-				{!loading && !searchedTodos.length && <p>¡Crea tu primer TODO!</p>}
+				{!loading && !searchedTodos.length && <TodoListEmpty />}
 				{searchedTodos.map((todo, index) => (
 					<TodoItem
 						key={index}
@@ -45,7 +47,7 @@ function AppUI() {
 					<TodoForm />
 				</Modal>
 			)}
-			<CreateTodoButton setModalOpen={setOpenModal} />
+			<CreateTodoButton setOpenModal={setOpenModal} />
 		</React.Fragment>
 	);
 }

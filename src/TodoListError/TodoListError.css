@@ -1,0 +1,23 @@
+.errorContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: 10rem;
+	text-align: center;
+}
+.errorImg {
+	width: 10rem;
+	height: 10rem;
+	margin-bottom: 1rem;
+	animation: errorImg 1s infinite alternate-reverse;
+}
+
+@keyframes errorImg {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0.9);
+	}
+}
